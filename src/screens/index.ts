@@ -1,0 +1,5 @@
+export { default as HomeScreen } from './Home' 
+export { default as ProfileScreen } from './Profile' 
+export { default as ExcercisesScreen } from './Exercises' 
+export { default as HistoryScreen } from './History' 
+export { default as WorkoutScreen } from './Workout' 
