@@ -5,6 +5,7 @@ import ExcercisesStack from './stacks/ExercisesStack';
 import WorkoutStack from './stacks/WorkoutStack';
 import HistoryStack from './stacks/HistoryStack';
 import ProfileStack from './stacks/ProfileStack';
+import { Platform, StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,11 +35,11 @@ function getTabBarIcon(routeName: string, color: string, size: number) {
 
 const BottomTabNavigator = () => {
   return (
-   <Tab.Navigator
+    <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarIcon: ({ color, size }) =>
-          getTabBarIcon(route.name, color, size),
+        tabBarIcon: ({ color, size }) => getTabBarIcon(route.name, color, size),
+        tabBarStyle: styles.tabBar,
       })}
     >
       <Tab.Screen name="Home" component={HomeStack} />
@@ -51,3 +52,25 @@ const BottomTabNavigator = () => {
 };
 
 export default BottomTabNavigator;
+
+const styles = StyleSheet.create({
+  tabBar: {
+    position: 'absolute',
+    bottom : 0,
+    left : 10,
+    right : 10,
+    backgroundColor : 'white',
+    borderTopLeftRadius:20,
+    borderTopRightRadius:20,
+    height:70,
+    shadowColor:'#000',
+    shadowOffset:{width:0, height:3},
+    shadowOpacity:0.2,
+    shadowRadius:4,
+    ...Platform.select({
+        android:{
+            elevation:10
+        }
+    })
+  },
+});
